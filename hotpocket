@@ -1,7 +1,8 @@
 getgenv().Config = {}
 
+local lp = game:GetService("Players").LocalPlayer
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Booga Booga (Void) by LenutJR", HidePremium = false, SaveConfig = false, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "Booga Booga by LenutJR", HidePremium = false, SaveConfig = false, ConfigFolder = "OrionTest"})
 local Tab = Window:MakeTab({
 	Name = "Main",
 	Icon = "rbxassetid://4483345998",
@@ -16,6 +17,12 @@ local Combat = Window:MakeTab({
 
 local ESP = Window:MakeTab({
 	Name = "ESP",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Farm = Window:MakeTab({
+	Name = "Autofarm",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -121,6 +128,82 @@ Tab:AddToggle({
 	Callback = function(v)
 		Config.infJump = v
         spawn(infJump)
+	end    
+})
+
+Farm:AddToggle({
+	Name = "Auto Hit (Feather Bush)",
+	Default = false,
+	Callback = function(v)
+		Config.featherBush = v
+        spawn(featherBush)
+	end    
+})
+
+Farm:AddToggle({
+	Name = "Auto Hit (Ancient Tree)",
+	Default = false,
+	Callback = function(v)
+		Config.ancientTree = v
+        spawn(ancientTree)
+	end    
+})
+
+local Section = Farm:AddSection({
+	Name = "God"
+})
+
+local godsList = {}
+
+for _, v in pairs(workspace.Resources:GetDescendants()) do
+    if v.Name == "Totem" and v.Parent:IsA("Model") then
+        table.insert(godsList, v.Parent.Name)
+    end
+end
+
+godDropdown = {"None"}
+for _, v in pairs(godsList) do
+    table.insert(godDropdown, v)
+end
+
+local godDown = Farm:AddDropdown({
+	Name = "Gods",
+	Default = "None",
+	Options = godDropdown,
+	Callback = function(god)
+		selectedGod = god
+	end    
+})
+
+Farm:AddButton({
+	Name = "Refresh God Dropdown",
+	Callback = function()
+      	loadGods()
+  	end    
+})
+
+function loadGods()
+    local godsList = {}
+
+    for _, v in pairs(workspace.Resources:GetDescendants()) do
+        if v.Name == "Totem" and v.Parent:IsA("Model") then
+            table.insert(godsList, v.Parent.Name)
+        end
+    end
+
+    godDropdown = {"None"}
+    for _, v in pairs(godsList) do
+        table.insert(godDropdown, v)
+    end
+    godDown:Refresh(godDropdown, true)
+end
+
+Farm:AddToggle({
+	Name = "Auto Hit (Selected God)",
+	Default = false,
+	Callback = function(v)
+		Config.godFarm = v
+        spawn(godFarm)
 	end    
 })
 
@@ -533,6 +616,28 @@ function jumpPower()
     end    
 end
 
+function featherBush()
+	while task.wait(0.1) and Config.featherBush do
+		local playerPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
+		local closestDistance = math.huge
+		local Stump = nil
+		local Leaves = nil
+		for _, v in pairs(workspace.Resources:GetDescendants()) do
+			if v.Name == "Leaves" and v.Parent.Name == "Feather Bush" then
+				local distance = (v.Position - playerPos).Magnitude
+				if distance < closestDistance and distance <= 20 then
+					closestDistance = distance
+					Stump = v.Parent:FindFirstChild("Stump")
+					Leaves = v
+				end
+			end
+		end
+		if Leaves and Stump then
+			game:GetService("ReplicatedStorage").Events.SwingTool:FireServer({Stump, Leaves})
+		end
+	end
+end
+
 function killAura()
     while task.wait() and Config.killAura do
         local Players = game:GetService("Players")
@@ -916,6 +1021,18 @@ function customAP()
 			end
 		end
 	end
+end
+
+function godFarm()
+    while task.wait() and Config.godFarm do
+        game:GetService("ReplicatedStorage").Events.SwingTool:FireServer({[1] = game:GetService("Workspace").Resources[selectedGod].Totem})
+    end
+end
+
+function ancientTree()
+    while task.wait() and Config.ancientTree do
+        game:GetService("ReplicatedStorage").Events.SwingTool:FireServer({[1] = game:GetService("Workspace").Resources["Ancient Tree"].Reference, [2] = game:GetService("Workspace").Resources["Ancient Tree"].Trunk})
+    end
 end
 
 function fuckDoors()
