@@ -277,7 +277,7 @@ Combat:AddDropdown({
 	end    
 })
 
-Combat = AddTextbox({
+Combat:AddTextbox({
 	Name = "Custom Food (Case Sensitive)",
 	Default = "",
 	TextDisappear = true,
