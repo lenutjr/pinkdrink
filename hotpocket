@@ -281,13 +281,22 @@ Combat = AddTextbox({
 	Name = "Custom Food (Case Sensitive)",
 	Default = "",
 	TextDisappear = true,
-	Callback = function(food)
-		selectedFood = food
+	Callback = function(customfood)
+		selectedCustomFood = customfood
 	end	  
 })
 
 Combat:AddToggle({
 	Name = "Auto Heal (Selected Food)",
+	Default = false,
+	Callback = function(v)
+		Config.autoHeal = v
+        spawn(autoHeal)
+	end    
+})
+
+Combat:AddToggle({
+	Name = "Auto Heal (*Custom Food*)",
 	Default = false,
 	Callback = function(v)
 		Config.autoHeal = v
@@ -1304,6 +1313,18 @@ function autoHeal()
 	while task.wait() and Config.autoHeal do
 		for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.RightPanel.Inventory.List:GetChildren()) do
 			if v.Name == selectedFood then
+				if lp.Character.Humanoid.Health < selectedLimit then
+					game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UseBagItem"):FireServer(v:GetAttribute("Index"))
+				end
+			end
+		end
+	end
+end
+
+function autoHealCustom()
+	while task.wait() and Config.autoHealCustom do
+		for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.RightPanel.Inventory.List:GetChildren()) do
+			if v.Name == selectedCustomFood then
 				if lp.Character.Humanoid.Health < selectedLimit then
 					game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UseBagItem"):FireServer(v:GetAttribute("Index"))
 				end
