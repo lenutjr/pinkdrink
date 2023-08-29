@@ -271,7 +271,7 @@ local Section = Combat:AddSection({
 Combat:AddDropdown({
 	Name = "Food",
 	Default = "None",
-	Options = {"Bloodfruit", "Bluefruit", "Sunfruit", "Cloud Berry", "Berry", "Apple", "Prickly Pear", "Banana", "Coconut", "Jelly"},
+	Options = {"Bloodfruit", "Bluefruit", "Sunfruit", "Cloud Berry", "Berry", "Apple", "Prickly Pear", "Banana", "Coconut", "Jelly", "Orange", "Lemon"},
 	Callback = function(food)
 		selectedFood = food
 	end    
