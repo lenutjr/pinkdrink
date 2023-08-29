@@ -1184,11 +1184,12 @@ function voidTP()
 end
 
 function autoHeal()
-while task.wait() and Config.autoHeal do
-	for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.RightPanel.Inventory.List:GetChildren()) do
-		if v.Name == selectedFood then
-			if lp.Character.Humanoid.Health < selectedLimit then
-				game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UseBagItem"):FireServer(v:GetAttribute("Index"))
+	while task.wait() and Config.autoHeal do
+		for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.RightPanel.Inventory.List:GetChildren()) do
+			if v.Name == selectedFood then
+				if lp.Character.Humanoid.Health < selectedLimit then
+					game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UseBagItem"):FireServer(v:GetAttribute("Index"))
+				end
 			end
 		end
 	end
