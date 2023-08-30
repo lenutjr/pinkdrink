@@ -693,15 +693,19 @@ end
 function APEssence()
 	while task.wait() and Config.APEssence do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Essence" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Essence" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -712,15 +716,19 @@ end
 function APGold()
 	while task.wait() and Config.APGold do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Gold" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Gold" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -731,15 +739,19 @@ end
 function APCrystal()
 	while task.wait() and Config.APCrystal do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
+		
+		if lp then
+			local character = lp.Character
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Crystal Chunk" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Crystal Chunk" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -750,15 +762,19 @@ end
 function APMag()
 	while task.wait() and Config.APMag do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Magnetite" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Magnetite" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -769,15 +785,19 @@ end
 function APIron()
 	while task.wait() and Config.APIron do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Iron" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Iron" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -788,15 +808,19 @@ end
 function APSteel()
 	while task.wait() and Config.APSteel do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Steel" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Steel" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -807,15 +831,19 @@ end
 function APPinkDiamond()
 	while task.wait() and Config.APPinkDiamond do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Pink Diamond" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Pink Diamond" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -826,15 +854,19 @@ end
 function APEmerald()
 	while task.wait() and Config.APEmerald do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Emerald" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Emerald" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -845,15 +877,19 @@ end
 function APVoidShard()
 	while task.wait() and Config.APVoidShard do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Void Shard" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Void Shard" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -864,15 +900,19 @@ end
 function APLog()
 	while task.wait() and Config.APLog do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Log" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Log" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -883,15 +923,19 @@ end
 function APWood()
 	while task.wait() and Config.APWood do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Wood" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Wood" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -902,15 +946,19 @@ end
 function APLeaves()
 	while task.wait() and Config.APLeaves do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Leaves" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Leaves" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -921,15 +969,19 @@ end
 function APSpiritKey()
 	while task.wait() and Config.APSpiritKey do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
 
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Spirit Key" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Spirit Key" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -940,15 +992,16 @@ end
 function APBlood()
 	while task.wait() and Config.APBlood do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
-
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Bloodfruit" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Bloodfruit" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -959,15 +1012,16 @@ end
 function APStone()
 	while task.wait() and Config.APStone do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
-
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Stone" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Stone" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -978,15 +1032,16 @@ end
 function APCoin()
 	while task.wait() and Config.APCoin do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
-
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Coin" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Coin" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -997,15 +1052,16 @@ end
 function APBerry()
 	while task.wait() and Config.APBerry do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
-
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == "Berry" then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == "Berry" then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
@@ -1016,15 +1072,16 @@ end
 function customAP()
 	while task.wait() and Config.customAP do
 		local lp = game.Players.LocalPlayer
-		local character = lp.Character
-		if character then
-    		local playerPosition = character.PrimaryPart.Position
-
-			for _, v in pairs(workspace.Items:GetChildren()) do
-				if v.Name == selectedPick then
-					local distance = (v.Position - playerPosition).Magnitude
-					if distance <= 50 then
-						game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+		if lp then
+			local character = lp.Character
+			if character and character:FindFirstChild("HumanoidRootPart") then
+				local playerPosition = character.PrimaryPart.Position
+				for _, v in pairs(workspace.Items:GetChildren()) do
+					if v.Name == selectedPick then
+						local distance = (v.Position - playerPosition).Magnitude
+						if distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(v)
+						end
 					end
 				end
 			end
