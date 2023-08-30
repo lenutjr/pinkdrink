@@ -10,7 +10,13 @@ local Tab = Window:MakeTab({
 })
 
 local Combat = Window:MakeTab({
-	Name = "Combat",
+	Name = "Combat/Heal",
+	Icon = "rbxassetid://4483345998",
+	PremiumOnly = false
+})
+
+local Food = Window:MakeTab({
+	Name = "Auto Eat",
 	Icon = "rbxassetid://4483345998",
 	PremiumOnly = false
 })
@@ -304,6 +310,7 @@ Combat:AddToggle({
 	end    
 })
 
+
 Combat:AddSlider({
 	Name = "Heal when HP Under",
 	Min = 1,
@@ -315,6 +322,74 @@ Combat:AddSlider({
 	Callback = function(HP)
 		selectedLimit = HP
 	end    
+})
+
+Food:AddToggle({
+	Name = "Auto Eat",
+	Default = false,
+	Callback = function(v)
+		Config.autoEat = v
+		spawn(autoEat)
+	end    
+})
+
+
+Food:AddSlider({
+	Name = "Eat When Hunger At %",
+	Min = 0.1,
+	Max = 1,
+	Default = 0.5,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 0.1,
+	ValueName = "%",
+	Callback = function(hunger)
+		selectedHunger = hunger
+	end    
+})
+
+Food:AddTextbox({
+	Name = "Food",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(fud1)
+		op1 = fud1
+	end	  
+})
+
+Food:AddTextbox({
+	Name = "Food",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(fud2)
+		op2 = fud2
+	end	  
+})
+
+Food:AddTextbox({
+	Name = "Food",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(fud3)
+		op3 = fud3
+	end	  
+})
+
+Food:AddTextbox({
+	Name = "Food",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(fud4)
+		op4 = fud4
+	end	  
+})
+
+Food:AddTextbox({
+	Name = "Food",
+	Default = "",
+	TextDisappear = false,
+	Callback = function(fud5)
+		op5 = fud5
+	end	  
 })
 
 ESP:AddButton({
@@ -1372,6 +1447,20 @@ function autoHeal()
 			if v.Name == selectedFood then
 				if lp.Character.Humanoid.Health < selectedLimit then
 					game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UseBagItem"):FireServer(v:GetAttribute("Index"))
+				end
+			end
+		end
+	end
+end
+
+function autoEat()
+	while task.wait(0.1) and Config.autoEat do
+		local foodBar = game:GetService("Players").LocalPlayer.PlayerGui.MainGui.Panels.Stats.Food.Slider.Size
+    	if foodBar.X.Scale <= selectedHunger then
+        	for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.RightPanel.Inventory.List:GetChildren()) do
+            	if v.Name == op1 or v.Name == op2 or v.Name == op3 or v.Name == op4 or v.Name == op5 then
+                	game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UseBagItem"):FireServer(v:GetAttribute("Index"))
+                	break
 				end
 			end
 		end
