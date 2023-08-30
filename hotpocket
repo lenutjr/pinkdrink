@@ -626,7 +626,7 @@ function jumpPower()
 end
 
 function featherBush()
-	while task.wait(0.1) and Config.featherBush do
+	while task.wait() and Config.featherBush do
 		local playerPos = game.Players.LocalPlayer.Character.HumanoidRootPart.Position
 		local closestDistance = math.huge
 		local Stump = nil
