@@ -84,6 +84,15 @@ Tab:AddToggle({
 	end    
 })
 
+Tab:AddToggle({
+	Name = "Anti Dock",
+	Default = false,
+	Callback = function(v)
+		Config.antiDock = v
+        spawn(antiDock)
+	end    
+})
+
 local Section = Tab:AddSection({
 	Name = "LP"
 })
@@ -1474,6 +1483,16 @@ function autoHealCustom()
 				if lp.Character.Humanoid.Health < selectedLimit then
 					game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("UseBagItem"):FireServer(v:GetAttribute("Index"))
 				end
+			end
+		end
+	end
+end
+
+function antiDock()
+	while task.wait() and Config.antiDock do
+		for _, v in pairs(workspace.Deployables:GetDescendants()) do
+			if v.Name == "StructureWood" and v.Parent.Name == "Dock" then
+				v:Destroy()
 			end
 		end
 	end
