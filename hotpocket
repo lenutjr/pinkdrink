@@ -800,7 +800,7 @@ function killAura()
 end
 
 function APEssence()
-	while task.wait() and Config.APEssence do
+	while task.wait(0.05) and Config.APEssence do
 		local lp = game.Players.LocalPlayer
 
 		if lp then
@@ -823,7 +823,7 @@ function APEssence()
 end
 
 function APGold()
-	while task.wait() and Config.APGold do
+	while task.wait(0.05) and Config.APGold do
 		local lp = game.Players.LocalPlayer
 
 		if lp then
@@ -846,7 +846,7 @@ function APGold()
 end
 
 function APCrystal()
-	while task.wait() and Config.APCrystal do
+	while task.wait(0.05) and Config.APCrystal do
 		local lp = game.Players.LocalPlayer
 		
 		if lp then
@@ -869,7 +869,7 @@ function APCrystal()
 end
 
 function APMag()
-	while task.wait() and Config.APMag do
+	while task.wait(0.05) and Config.APMag do
 		local lp = game.Players.LocalPlayer
 
 		if lp then
@@ -892,7 +892,7 @@ function APMag()
 end
 
 function APIron()
-	while task.wait() and Config.APIron do
+	while task.wait(0.05) and Config.APIron do
 		local lp = game.Players.LocalPlayer
 
 		if lp then
@@ -915,7 +915,7 @@ function APIron()
 end
 
 function APSteel()
-	while task.wait() and Config.APSteel do
+	while task.wait(0.05) and Config.APSteel do
 		local lp = game.Players.LocalPlayer
 
 		if lp then
@@ -938,7 +938,7 @@ function APSteel()
 end
 
 function APPinkDiamond()
-	while task.wait() and Config.APPinkDiamond do
+	while task.wait(0.05) and Config.APPinkDiamond do
 		local lp = game.Players.LocalPlayer
 
 		if lp then
@@ -961,7 +961,7 @@ function APPinkDiamond()
 end
 
 function APEmerald()
-	while task.wait() and Config.APEmerald do
+	while task.wait(0.05) and Config.APEmerald do
 		local lp = game.Players.LocalPlayer
 
 		if lp then
@@ -984,7 +984,7 @@ function APEmerald()
 end
 
 function APVoidShard()
-	while task.wait() and Config.APVoidShard do
+	while task.wait(0.05) and Config.APVoidShard do
 		local lp = game.Players.LocalPlayer
 
 		if lp then
@@ -1007,7 +1007,7 @@ function APVoidShard()
 end
 
 function APLog()
-	while task.wait() and Config.APLog do
+	while task.wait(0.05) and Config.APLog do
 		local lp = game.Players.LocalPlayer
 
 		if lp then
@@ -1030,7 +1030,7 @@ function APLog()
 end
 
 function APWood()
-	while task.wait() and Config.APWood do
+	while task.wait(0.05) and Config.APWood do
 		local lp = game.Players.LocalPlayer
 
 		if lp then
@@ -1053,7 +1053,7 @@ function APWood()
 end
 
 function APLeaves()
-	while task.wait() and Config.APLeaves do
+	while task.wait(0.05) and Config.APLeaves do
 		local lp = game.Players.LocalPlayer
 
 		if lp then
@@ -1076,7 +1076,7 @@ function APLeaves()
 end
 
 function APSpiritKey()
-	while task.wait() and Config.APSpiritKey do
+	while task.wait(0.05) and Config.APSpiritKey do
 		local lp = game.Players.LocalPlayer
 
 		if lp then
@@ -1099,7 +1099,7 @@ function APSpiritKey()
 end
 
 function APBlood()
-	while task.wait() and Config.APBlood do
+	while task.wait(0.05) and Config.APBlood do
 		local lp = game.Players.LocalPlayer
 		if lp then
 			local character = lp.Character
@@ -1119,7 +1119,7 @@ function APBlood()
 end
 
 function APStone()
-	while task.wait() and Config.APStone do
+	while task.wait(0.05) and Config.APStone do
 		local lp = game.Players.LocalPlayer
 		if lp then
 			local character = lp.Character
@@ -1139,7 +1139,7 @@ function APStone()
 end
 
 function APCoin()
-	while task.wait() and Config.APCoin do
+	while task.wait(0.05) and Config.APCoin do
 		local lp = game.Players.LocalPlayer
 		if lp then
 			local character = lp.Character
@@ -1159,7 +1159,7 @@ function APCoin()
 end
 
 function APBerry()
-	while task.wait() and Config.APBerry do
+	while task.wait(0.05) and Config.APBerry do
 		local lp = game.Players.LocalPlayer
 		if lp then
 			local character = lp.Character
@@ -1179,7 +1179,7 @@ function APBerry()
 end
 
 function customAP()
-	while task.wait() and Config.customAP do
+	while task.wait(0.05) and Config.customAP do
 		local lp = game.Players.LocalPlayer
 		if lp then
 			local character = lp.Character
