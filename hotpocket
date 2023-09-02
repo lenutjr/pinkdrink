@@ -342,6 +342,32 @@ Combat:AddSlider({
 	end    
 })
 
+local Section = Combat:AddSection({
+	Name = "Auto Shield"
+})
+
+Combat:AddToggle({
+	Name = "Auto Void Shield",
+	Default = false,
+	Callback = function(v)
+		Config.autoShield = v
+        spawn(autoShield)
+	end    
+})
+
+Combat:AddSlider({
+	Name = "Shield When HP Under",
+	Min = 1,
+	Max = 100,
+	Default = 50,
+	Color = Color3.fromRGB(255,255,255),
+	Increment = 1,
+	ValueName = "HP",
+	Callback = function(shield)
+		selectedShield = shield
+	end    
+})
+
 Food:AddToggle({
 	Name = "Auto Eat",
 	Default = false,
@@ -1549,6 +1575,25 @@ function antiDock()
 		end
 	end
 end
+
+function autoShield()
+	while Config.autoShield do
+		task.wait()
+		local lp = game:GetService("Players").LocalPlayer
+		local character = lp.Character or lp.CharacterAdded:Wait()
+		local humanoid = character:WaitForChild("Humanoid")
+		local primaryPart = character:FindFirstChild("HumanoidRootPart")
+
+		if primaryPart then
+			local pos = primaryPart.Position
+
+			if humanoid.Health <= selectedShield then
+				game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("VoodooSpell"):FireServer(pos)
+			end
+		end
+	end
+end
+
 
 function setFPS()
     setfps(144)
