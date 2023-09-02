@@ -808,47 +808,61 @@ function killAura()
     end
 end
 
-local humanoid = game.Players.LocalPlayer.Character.Humanoid
+local lp = game.Players.LocalPlayer
+local humanoid = lp.Character and lp.Character:FindFirstChild("Humanoid")
 local animation = Instance.new("Animation")
 animation.AnimationId = "rbxassetid://10761451679"
-
-local animationTrack = humanoid:LoadAnimation(animation)
+local animationTrack = humanoid and humanoid:LoadAnimation(animation)
 
 function swingTool()
     while task.wait() and Config.killAura do
-		local lp = game.Players.LocalPlayer
-		local lpCharacter = lp.Character
-		local lpHumanoidRootPart = lpCharacter and lpCharacter:FindFirstChild("HumanoidRootPart")
-		
-		local isInRange = false
-		
-		for _, player in pairs(game.Players:GetPlayers()) do
-			if player ~= lp then
-				local character = player.Character
-				local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
-				
-				if humanoidRootPart and lpHumanoidRootPart then
-					local distance = (lpHumanoidRootPart.Position - humanoidRootPart.Position).Magnitude
-					if distance <= selectedRange then
-						isInRange = true
-						break
-					end
-				end
-			end
-		end
-		
-		if isInRange then
-			for _, v in pairs(lp.PlayerGui.MainGui.Panels.Toolbar.List:GetDescendants()) do
-				if v.Name == "InactiveIcon" and v.Visible == false then
-					animationTrack:Play()
-					task.wait(0.5)
-				else
-					animationTrack:Stop()
-				end
-			end
-		else
-			animationTrack:Stop()
-		end
+        lp = game.Players.LocalPlayer
+        local lpCharacter = lp and lp.Character
+        if not lp or not lpCharacter then
+            continue
+        end
+
+        local lpHumanoidRootPart = lpCharacter:FindFirstChild("HumanoidRootPart")
+        if not lpHumanoidRootPart then
+            continue
+        end
+
+        local isInRange = false
+        for _, player in pairs(game.Players:GetPlayers()) do
+            if player ~= lp then
+                local character = player.Character
+                
+                local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
+                if not humanoidRootPart then
+                    continue
+                end
+                
+                local distance = (lpHumanoidRootPart.Position - humanoidRootPart.Position).Magnitude
+                if distance <= selectedRange then
+                    isInRange = true
+                    break
+                end
+            end
+        end
+
+        if isInRange then
+            for _, v in pairs(lp.PlayerGui.MainGui.Panels.Toolbar.List:GetDescendants()) do
+                if v.Name == "InactiveIcon" and v.Visible == false then
+                    if animationTrack then
+                        animationTrack:Play()
+                    end
+                    task.wait(0.5)
+                else
+                    if animationTrack then
+                        animationTrack:Stop()
+                    end
+                end
+            end
+        else
+            if animationTrack then
+                animationTrack:Stop()
+            end
+        end
     end
 end
 
