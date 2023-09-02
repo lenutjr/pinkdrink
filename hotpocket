@@ -240,7 +240,6 @@ Combat:AddToggle({
     Default = false,
     Callback = function(v)
         swingAnimation = v
-		print(swingAnimation)
     end    
 })
 
