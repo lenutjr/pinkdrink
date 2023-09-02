@@ -235,6 +235,15 @@ Combat:AddToggle({
 	end    
 })
 
+Combat:AddToggle({
+    Name = "Swing Tool Animation",
+    Default = false,
+    Callback = function(v)
+        swingAnimation = v
+		print(swingAnimation)
+    end    
+})
+
 Combat:AddSlider({
 	Name = "Killaura Range",
 	Min = 5,
@@ -731,6 +740,12 @@ function featherBush()
 	end
 end
 
+local humanoid = game.Players.LocalPlayer.Character.Humanoid
+local animation = Instance.new("Animation")
+animation.AnimationId = "rbxassetid://10761451679"
+
+local animationTrack = humanoid:LoadAnimation(animation)
+
 function killAura()
     while task.wait() and Config.killAura do
         local Players = game:GetService("Players")
@@ -767,6 +782,13 @@ function killAura()
                 if v:IsA("MeshPart") then
                     table.insert(args[1], v)
                 end
+            end
+            if swingAnimation ~= false then
+                if not animationTrack.IsPlaying then
+                    animationTrack:Play()
+                end
+            else
+                animationTrack:Stop()
             end
             
             game:GetService("ReplicatedStorage"):WaitForChild("Events"):WaitForChild("SwingTool"):FireServer(unpack(args))
