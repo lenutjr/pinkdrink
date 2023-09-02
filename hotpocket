@@ -784,7 +784,11 @@ function killAura()
             end
             if swingAnimation ~= false then
                 if not animationTrack.IsPlaying then
+					for _, v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainGui.Panels.Toolbar.List:GetDescendants()) do
+						if v.Name == "InactiveIcon" and v.Visible == false then
                     animationTrack:Play()
+						end
+					end
                 end
             else
                 animationTrack:Stop()
