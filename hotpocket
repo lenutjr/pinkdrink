@@ -824,8 +824,9 @@ local function getClosestPlayer()
     end
     
     for _, player in ipairs(game.Players:GetPlayers()) do
-        if player ~= lp and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
-            local distance = (player.Character.HumanoidRootPart.Position - lpHumanoidRootPart.Position).Magnitude
+        local character = player.Character
+        if player ~= lp and character and character.Parent == workspace and character:FindFirstChild("HumanoidRootPart") then
+            local distance = (character.HumanoidRootPart.Position - lpHumanoidRootPart.Position).Magnitude
             
             if distance < selectedRange and distance < shortestDistance then
                 closestPlayer = player
@@ -841,7 +842,7 @@ function swingTool()
     while task.wait() and Config.killAura do
         lp = game.Players.LocalPlayer
         local lpCharacter = lp and lp.Character
-        if not lp or not lpCharacter then
+        if not lp or not lpCharacter or lpCharacter.Parent ~= workspace then
             continue
         end
 
