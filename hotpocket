@@ -814,6 +814,29 @@ local animation = Instance.new("Animation")
 animation.AnimationId = "rbxassetid://10761451679"
 local animationTrack = humanoid and humanoid:LoadAnimation(animation)
 
+local function getClosestPlayer()
+    local closestPlayer
+    local shortestDistance = math.huge
+    
+    local lpHumanoidRootPart = lp.Character and lp.Character:FindFirstChild("HumanoidRootPart")
+    if not lpHumanoidRootPart then
+        return nil
+    end
+    
+    for _, player in ipairs(game.Players:GetPlayers()) do
+        if player ~= lp and player.Character and player.Character:FindFirstChild("HumanoidRootPart") then
+            local distance = (player.Character.HumanoidRootPart.Position - lpHumanoidRootPart.Position).Magnitude
+            
+            if distance < selectedRange and distance < shortestDistance then
+                closestPlayer = player
+                shortestDistance = distance
+            end
+        end
+    end
+    
+    return closestPlayer
+end
+
 function swingTool()
     while task.wait() and Config.killAura do
         lp = game.Players.LocalPlayer
@@ -822,28 +845,8 @@ function swingTool()
             continue
         end
 
-        local lpHumanoidRootPart = lpCharacter:FindFirstChild("HumanoidRootPart")
-        if not lpHumanoidRootPart then
-            continue
-        end
-
-        local isInRange = false
-        for _, player in pairs(game.Players:GetPlayers()) do
-            if player ~= lp then
-                local character = player.Character
-                
-                local humanoidRootPart = character and character:FindFirstChild("HumanoidRootPart")
-                if not humanoidRootPart then
-                    continue
-                end
-                
-                local distance = (lpHumanoidRootPart.Position - humanoidRootPart.Position).Magnitude
-                if distance <= selectedRange then
-                    isInRange = true
-                    break
-                end
-            end
-        end
+        local nearestPlayer = getClosestPlayer()
+        local isInRange = (nearestPlayer ~= nil)
 
         if isInRange then
             for _, v in pairs(lp.PlayerGui.MainGui.Panels.Toolbar.List:GetDescendants()) do
