@@ -598,6 +598,19 @@ Pickup:AddToggle({
 	end    
 })
 
+local Section = Pickup:AddSection({
+	Name = "Coin From Coin Press"
+})
+
+Pickup:AddToggle({
+	Name = "Auto Pickup (Coin)",
+	Default = false,
+	Callback = function(v)
+		Config.coinFromPress = v
+        spawn(coinFromPress)
+	end    
+})
+
 OrionLib:Init()
 
 function antiAFK()
@@ -1612,6 +1625,29 @@ function autoShield()
 	end
 end
 
+function coinFromPress()
+	while task.wait() and Config.coinFromPress do
+		local lp = game:GetService("Players").LocalPlayer
+		local minDistance = math.huge
+		
+		if lp then
+			local hrp = lp.Character.HumanoidRootPart
+			
+			if hrp then
+				local pos = hrp.Position
+		
+				for _, coin in pairs(workspace.ItemDrops:GetChildren()) do
+					if coin.Name == "Coin2" then
+						local distance = (coin.Position - pos).magnitude
+						if minDistance and distance <= 50 then
+							game:GetService("ReplicatedStorage").Events.Pickup:FireServer(coin)
+						end
+					end
+				end
+			end
+		end
+	end
+end
 
 function setFPS()
     setfps(144)
